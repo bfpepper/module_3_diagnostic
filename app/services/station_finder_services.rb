@@ -12,8 +12,7 @@ class StationFinderServices
     actual_stations = parsed_stations[:fuel_stations]
     all_stations = set_station_data(actual_stations)
     closest = order_distance(all_stations)
-    this = find_correct_fuel(closest)
-    binding.pry
+    correct_stations = find_correct_fuel(closest).pop(10)
   end
 
   def set_station_data(actual_stations)
@@ -24,13 +23,12 @@ class StationFinderServices
 
   def order_distance(all_stations)
     all_stations.sort_by do |station|
-      station.distance
+      station.distance if station.distance < 6
     end
   end
 
   def find_correct_fuel(closest)
     closest.select do |station|
-      binding.pry
       station.fuel_type == "ELEC" || station.fuel_type == "LPG"
     end
   end
