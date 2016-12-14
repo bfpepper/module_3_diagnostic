@@ -7,10 +7,11 @@ class StationFinderServices
   end
 
   def get_stations
-    raw_stations = Faraday.get(@connection.get("nearest.json?api_key=#{ENV['nrel_key']}&location=zip").body
+    raw_stations = @connection.get("nearest.json?api_key=#{ENV['nrel_key']}&location=#{@zip_code}").body
     binding.pry
     parsed_stations = JSON.parse(raw_stations)
     actual_stations = parsed_stations["fuel_stations"]
+    
   end
 
 
