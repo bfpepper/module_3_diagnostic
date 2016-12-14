@@ -10,7 +10,6 @@ class StationFinderServices
     raw_stations = @connection.get("nearest.json?api_key=#{ENV['nrel_key']}&location=#{zip_code}")
     parsed_stations = JSON.parse(raw_stations.body, symbolize_names: true)
     actual_stations = parsed_stations[:fuel_stations]
-    binding.pry
     all_stations = set_station_data(actual_stations)
     closest = order_distance(all_stations)
     correct_stations = find_correct_fuel(closest).pop(10)
