@@ -7,7 +7,7 @@ describe "User can find alt fuel within 6 miles" do
     visit '/'
 
     # And I fill in the search form with 80203
-    fill_in :zip, with: "80203"
+    fill_in 'q', with: "80203"
 
     # And I click "Locate"
     click_on "Locate"
