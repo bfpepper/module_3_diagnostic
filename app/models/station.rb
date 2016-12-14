@@ -1,4 +1,5 @@
 class Station
+  attr_reader :name, 
 
   def initialize(station)
     @name = station[:station_name]
