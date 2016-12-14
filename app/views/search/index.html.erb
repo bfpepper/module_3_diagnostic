@@ -1,12 +1,10 @@
-All the LPG and ELEC stations closest to <%= @zip %>
-
-
+All the LPG and ELEC stations closest to <%= @zip %></br>
 <% @stations.each do |station| %>
 <ul>
   Name: <%= station.name %></br>
   Address: <%= station.address %></br>
   Types of Fuel: <%= station.fuel_type %></br>
-  Distance From You: <%= station.distance %></br> Miles
+  Distance From You: <%= station.distance %> Miles</br>
   When You Can Access Them: <%= station.access_times %></br>
 </ul>
 <% end %>
