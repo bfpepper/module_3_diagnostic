@@ -11,7 +11,8 @@ class StationFinderServices
     parsed_stations = JSON.parse(raw_stations, symbolize_names: true)
     actual_stations = parsed_stations[:fuel_stations]
     all_stations = set_station_data(actual_stations)
-    this = order_stations(all_stations)
+    closest = order_distance(all_stations)
+    this = find_correct_fuel(closest)
     binding.pry
   end
 
@@ -21,9 +22,16 @@ class StationFinderServices
     end
   end
 
-  def order_stations(all_stations)
+  def order_distance(all_stations)
     all_stations.sort_by do |station|
-      station
+      station.distance
+    end
+  end
+
+  def find_correct_fuel(closest)
+    closest.select do |station|
+      binding.pry
+      station.fuel_type == "ELEC" || station.fuel_type == "LPG"
     end
   end
 
