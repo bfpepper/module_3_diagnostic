@@ -11,7 +11,6 @@ describe "User can find alt fuel within 6 miles" do
 
     expect(current_path).to eq("/search")
 
-save_and_open_page
     expect(page).to have_content("Name")
     expect(page).to have_content("Types of Fuel")
     expect(page).to have_content("Address")
