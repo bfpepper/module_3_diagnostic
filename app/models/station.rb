@@ -9,4 +9,10 @@ class Station
     @access_times = station[:access_days_time]
   end
 
+  def self.all_by(params)
+    stations = StationFinderServices.new.get_stations(params[:q])
+    stations[:fuel_stations].map do |station|
+      Station.new(station)
+    end
+  end
 end

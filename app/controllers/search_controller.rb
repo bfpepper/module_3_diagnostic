@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
 
   def index
-    @stations = StationFinderServices.new(params[:q]).get_stations
     @zip = params[:q]
+    @stations = Station.all_by(params)
   end
 
 end
